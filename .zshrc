@@ -14,7 +14,6 @@ export GREP_OPTIONS='--color=auto'
 # http://d.hatena.ne.jp/edvakf/20080413/1208042916
 export LSCOLORS=gxfxcxdxbxegedabagacad
 
-export HISTSIZE=10000
 
 # 直前のコマンドと同一ならば登録しない
 setopt hist_ignore_dups
@@ -59,9 +58,9 @@ cdpath=($HOME)
 #setopt PROMPT_SUBST
 
 ### history
+HISTSIZE=20000
+SAVEHIST=20000
 HISTFILE=~/.zsh_history
-HISTSIZE=100000
-SAVEHIST=100000
 setopt share_history
 
 ### alias
@@ -77,6 +76,7 @@ alias f='find . -name'
 alias vi='vim'
 alias gd='dirs -v; echo -n "select number: "; read newdir; cd +"$newdir"'
 alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
+alias vv='/Applications/MacVim.app/Contents/MacOS/MacVim -g'
 
 
 # 256色確認

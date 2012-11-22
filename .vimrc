@@ -35,6 +35,7 @@ set nohlsearch          "検索結果文字列の非ハイライト表示
 set noswapfile          "スワップファイルを作成しない
 set clipboard=unnamed,autoselect " ヤンクでクリップボードにコピーする
 
+" nnoremap <M-f> <C-f>
 
 
 " memo:
@@ -71,5 +72,94 @@ endfunction
 
 "autocmd QuickfixCmdPost vimgrep call OpenModifiableQF()
 autocmd QuickfixCmdPost grep call OpenModifiableQF()
+
+
+" for macvim
+if has('gui_macvim')
+    set showtabline=2       " タブを常に表示
+"    set imdisable           " IMを無効化
+    set transparency=3      " 透明度を指定
+    set antialias
+    set guifont=Monaco:h12
+"   colorscheme macvim
+    colorscheme macvim
+
+    " dark にしたければ以下を有効に
+    " set background=dark
+    " light にしたければ以下を有効に
+    set background=light
+    colorscheme solarized
+
+    " 起動時にフルスクリーンモードにする
+"    set fuoptions=maxvert,maxhorz
+"    au GUIEnter * set fullscreen
+    set lines=60
+    set columns=160
+endif
+
+"" for Project.vim (Vim book)
+" ファイルが選択されたらウインドウを閉じる 
+":let g:proj_flags = "imstc"
+" <Leader>p でプロジェクトを開閉する
+":nmap <silent> <Leader>p <Plug>ToggleProject
+
+" <Leader>p でデフォルトのプロジェクトを開く
+":nmap <silent> <Leader>p :Project<CR>
+
+"プロジェクトを開いた状態で展開した状態にする
+autocmd BufAdd .proj silent! %foldopen!
+
+
+
+" ファイルを開いた時にファイルのカレントディレクトリをワーキングディレクトリにする
+augroup grlcd
+    autocmd!
+    autocmd BufEnter * lcd %:p:h
+augroup end
+
+
+" ---------------------------------------------------
+" NERDTree - http://blog.livedoor.jp/sasata299/archives/51711587.html
+" NERDTree を F9 でトグル, または バクスラp で起動
+:nmap <F9> :NERDTreeToggle<CR>
+:nmap <silent> <Leader>p :NERDTreeToggle<CR>
+
+" :NERDTree / :NERDTreeToggle
+
+" :NERDTree + grep
+" http://yp.xenophy.com/?p=78
+
+"filetype off
+
+"-----------------------------------
+
+set rtp+=~/.vim/vundle.git/
+call vundle#rc()
+
+" github の任意のリポジトリ (2)
+Bundle 'scrooloose/nerdtree'
+Bundle 'altercation/vim-colors-solarized'
+
+"filetype plugin indent on
+
+" ファイルオープン時にNERDTreeを起動
+let file_name = expand("%")
+if has('vim_starting')
+    autocmd VimEnter * NERDTree ./
+endif
+
+
+" --- vim plugin ---
+" http://www.ispern.com/?p=324
+
+" map の話 http://vimperator.g.hatena.ne.jp/snaka72/20090125/1232856965
+" 複数のmodifierを組み合わせる場合、たとえば、Shift + Meta + a の場合は<S-M-a>（）という感じで続けて記述する。
+
+" <CTRL + w> left  で画面を一つだけにする
+" <CTRL + w> up    で水平分割
+" <CTRL + w> right で垂直分割
+nnoremap <silent> <C-w><Left> :only<CR>
+nnoremap <silent> <C-w><Up> :sp<CR>
+nnoremap <silent> <C-w><Right> :vsp<CR>
 
 
