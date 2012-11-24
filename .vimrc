@@ -9,11 +9,9 @@ set shortmess=t         "'Press RETURN or enter command to continue' を表示�
 set history=100         "保存するコマンド数"
 set wildmode=list:longest "コマンドライン補完をシェルと同じに"
 set magic               "正規表現使用時に magic モードにする"
-set incsearch           "検索してすぐにその単語の所まで飛ぶ"
-set hlsearch            "検索ワードをハイライトする"
 set cindent             "インデントを有効にする
 set iminsert=1          "日本語入力状態でもEscでコマンドモードへ"
-set statusline=%F%m%r%h%w\ {\ type:%Y,\ x:%03v,\ y:%03p%%,\ hex:%04B\ } " path { type:filetype, x:cols, y:rows%, hex:charcode }
+set statusline=%F%m%r%h%w\ {\ code:%{&fileencoding},\ type:%Y,\ x:%03v,\ y:%03p%%,\ hex:%04B\ } " path { type:filetype, x:cols, y:rows%, hex:charcode }
 set showmatch           "対応する括弧に一時的に移動"
 set backup
 set backupdir=$HOME/backup/vim
@@ -35,6 +33,8 @@ set noincsearch         "検索文字列入力時に順次対象文字列にヒ�
 set nohlsearch          "検索結果文字列の非ハイライト表示
 set noswapfile          "スワップファイルを作成しない
 set clipboard=unnamed,autoselect " ヤンクでクリップボードにコピーする
+set incsearch           "検索してすぐにその単語の所まで飛ぶ"
+set hlsearch            "検索ワードをハイライトする"
 
 " 検索結果のハイライトをEsc連打でクリアする
 nnoremap <ESC><ESC> :nohlsearch<CR>
@@ -105,7 +105,7 @@ call vundle#rc()
 " github の任意のリポジトリ
 " 変更後に :BundleInstall を実行すること
 Bundle 'scrooloose/nerdtree'
-Bundle 'altercation/vim-colors-solarized'
+" Bundle 'altercation/vim-colors-solarized'
 Bundle 'mileszs/ack.vim'
 " Ack [option]{pattern}[dir]
 " 例: Ack function
@@ -133,4 +133,11 @@ nnoremap <silent> <C-w><Up> :sp<CR>
 nnoremap <silent> <C-w><Left> :only<CR>
 nnoremap <silent> <C-w><Right> :vsp<CR>
 
+
+" ctags -f ~/.tags -R ~/oss/
+":set tags=~/.tags,/home/user/commontags
+:set tags=~/.tags,.tags
+
+" #h とタイプすることでHTMLのひな形を挿入する
+:ab #h <!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" type="text/css" href="a.css" /><script src="a.js"></script></head><body> </body></html>
 

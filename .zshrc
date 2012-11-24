@@ -75,13 +75,18 @@ alias l='ls -ltr'
 alias f='find . -name'
 
 alias gd='dirs -v; echo -n "select number: "; read newdir; cd +"$newdir"'
-alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
 alias vv='/Applications/MacVim.app/Contents/MacOS/MacVim -g'
 
 # mac-vim kaoriya http://code.google.com/p/macvim-kaoriya/
 # alias vi='vim'
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim='env_LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+
+# ctags
+# ctags -R でtags ファイルを生成
+# :!ctags や CTRL + ] でタグファイル検索
+# alias ctags='/Applications/MacVim.app/Contents/MacOS/ctags "$@"'
+alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
 
 
 # 256色確認
@@ -96,7 +101,7 @@ function pcolor() {
 }
 
 # edit and reload resource files: 設定ファイル(zshrc, vimrc)編集用
-alias rr='vi ~/.zshrc ~/.vimrc;rrr'
+alias rr='vi ~/.zshrc ~/.vimrc ~/.gvimrc;rrr'
 function rrr() {
   source ${HOME}/.zshrc
 }
