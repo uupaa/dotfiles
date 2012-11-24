@@ -36,6 +36,14 @@ set nohlsearch          "検索結果文字列の非ハイライト表示
 set noswapfile          "スワップファイルを作成しない
 set clipboard=unnamed,autoselect " ヤンクでクリップボードにコピーする
 
+" 検索結果のハイライトをEsc連打でクリアする
+nnoremap <ESC><ESC> :nohlsearch<CR>
+
+" mac vim で <Leader>(円記号) を使用可能にする
+if has('gui_macvim')
+    let mapleader='¥'
+endif
+
 " nnoremap <M-f> <C-f>
 
 
@@ -43,11 +51,6 @@ set clipboard=unnamed,autoselect " ヤンクでクリップボードにコピー
 " 最後に保存するまでにどれぐらい修正したかを確認したい
 " http://nanasi.jp/articles/howto/diff/diff-original-file.html
 " :DiffOrig
-
-
-
-
-
 
 " ack で grep する
 " :gr[ep] KEYWORD | cw[in] -> open QuickFix window
@@ -61,7 +64,7 @@ set grepprg=ack
 "ファイルを開いた際に、前回終了時の行で起動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 
-command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
+"command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 
 " http://d.hatena.ne.jp/ryochack/20110609/1307639604
 " quickfix: 編集許可と折り返し表示無効
@@ -99,9 +102,14 @@ augroup end
 set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 
-" github の任意のリポジトリ (2)
+" github の任意のリポジトリ
+" 変更後に :BundleInstall を実行すること
 Bundle 'scrooloose/nerdtree'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'mileszs/ack.vim'
+" Ack [option]{pattern}[dir]
+" 例: Ack function
+" コマンドラインからは ack function <CR>
 
 "filetype plugin indent on
 
@@ -121,8 +129,8 @@ endif
 " <CTRL + w> left  で画面を一つだけにする
 " <CTRL + w> up    で水平分割
 " <CTRL + w> right で垂直分割
-nnoremap <silent> <C-w><Left> :only<CR>
 nnoremap <silent> <C-w><Up> :sp<CR>
+nnoremap <silent> <C-w><Left> :only<CR>
 nnoremap <silent> <C-w><Right> :vsp<CR>
 
 
