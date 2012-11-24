@@ -22,12 +22,12 @@ set ruler               "ルーラーの表示
 set showcmd             "入力中のコマンドをステータスに表示する
 set showmatch           "括弧入力時の対応する括弧を表示
 set laststatus=2        "ステータスラインを常に表示
-set smartindent         "オートインデント
+"set smartindent         "オートインデント
 set expandtab           "タブの代わりに空白文字挿入
 set ts=4 sw=4 sts=0     "タブは半角4文字分のスペース
 set ignorecase          "検索文字列が小文字の場合は大文字小文字を区別なく検索する
 set smartcase           "検索文字列に大文字が含まれている場合は区別して検索する
-set wrap                "長い行を折り返す
+"set wrap                "長い行を折り返す
 set wrapscan            "検索時に最後まで行ったら最初に戻る
 set noincsearch         "検索文字列入力時に順次対象文字列にヒットさせない
 set nohlsearch          "検索結果文字列の非ハイライト表示
@@ -35,6 +35,11 @@ set noswapfile          "スワップファイルを作成しない
 set clipboard=unnamed,autoselect " ヤンクでクリップボードにコピーする
 set incsearch           "検索してすぐにその単語の所まで飛ぶ"
 set hlsearch            "検索ワードをハイライトする"
+
+" 2byteコードでカーソル位置がずれないように
+if exists('&ambiwidth')
+    set ambiwidth=double
+endif
 
 " 検索結果のハイライトをEsc連打でクリアする
 nnoremap <ESC><ESC> :nohlsearch<CR>
