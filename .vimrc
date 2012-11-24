@@ -11,6 +11,7 @@ set wildmode=list:longest "コマンドライン補完をシェルと同じに"
 set magic               "正規表現使用時に magic モードにする"
 set incsearch           "検索してすぐにその単語の所まで飛ぶ"
 set hlsearch            "検索ワードをハイライトする"
+set cindent             "インデントを有効にする
 set iminsert=1          "日本語入力状態でもEscでコマンドモードへ"
 set statusline=%F%m%r%h%w\ {\ type:%Y,\ x:%03v,\ y:%03p%%,\ hex:%04B\ } " path { type:filetype, x:cols, y:rows%, hex:charcode }
 set showmatch           "対応する括弧に一時的に移動"
@@ -73,44 +74,6 @@ endfunction
 "autocmd QuickfixCmdPost vimgrep call OpenModifiableQF()
 autocmd QuickfixCmdPost grep call OpenModifiableQF()
 
-
-" for macvim
-if has('gui_macvim')
-    set showtabline=2       " タブを常に表示
-"    set imdisable           " IMを無効化
-    set transparency=3      " 透明度を指定
-    set antialias
-    set guifont=Monaco:h12
-"   colorscheme macvim
-    colorscheme macvim
-
-    " dark にしたければ以下を有効に
-    " set background=dark
-    " light にしたければ以下を有効に
-    set background=light
-    colorscheme solarized
-
-    " 起動時にフルスクリーンモードにする
-"    set fuoptions=maxvert,maxhorz
-"    au GUIEnter * set fullscreen
-    set lines=60
-    set columns=160
-endif
-
-"" for Project.vim (Vim book)
-" ファイルが選択されたらウインドウを閉じる 
-":let g:proj_flags = "imstc"
-" <Leader>p でプロジェクトを開閉する
-":nmap <silent> <Leader>p <Plug>ToggleProject
-
-" <Leader>p でデフォルトのプロジェクトを開く
-":nmap <silent> <Leader>p :Project<CR>
-
-"プロジェクトを開いた状態で展開した状態にする
-autocmd BufAdd .proj silent! %foldopen!
-
-
-
 " ファイルを開いた時にファイルのカレントディレクトリをワーキングディレクトリにする
 augroup grlcd
     autocmd!
@@ -121,7 +84,7 @@ augroup end
 " ---------------------------------------------------
 " NERDTree - http://blog.livedoor.jp/sasata299/archives/51711587.html
 " NERDTree を F9 でトグル, または バクスラp で起動
-:nmap <F9> :NERDTreeToggle<CR>
+" :nmap <F9> :NERDTreeToggle<CR>
 :nmap <silent> <Leader>p :NERDTreeToggle<CR>
 
 " :NERDTree / :NERDTreeToggle

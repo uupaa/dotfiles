@@ -73,10 +73,15 @@ alias ls='ls'
 alias ll='ls -la'
 alias l='ls -ltr'
 alias f='find . -name'
-alias vi='vim'
+
 alias gd='dirs -v; echo -n "select number: "; read newdir; cd +"$newdir"'
 alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
 alias vv='/Applications/MacVim.app/Contents/MacOS/MacVim -g'
+
+# mac-vim kaoriya http://code.google.com/p/macvim-kaoriya/
+# alias vi='vim'
+alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+alias vim='env_LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
 
 # 256色確認
