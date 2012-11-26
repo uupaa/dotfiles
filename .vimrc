@@ -146,3 +146,7 @@ nnoremap <silent> <C-w><Right> :vsp<CR>
 " #h とタイプすることでHTMLのひな形を挿入する
 :ab #h <!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" type="text/css" href="a.css" /><script src="a.js"></script></head><body> </body></html>
 
+" tab を表示する
+set list
+"set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
