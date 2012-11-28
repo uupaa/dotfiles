@@ -3,6 +3,7 @@
 syntax on               "カラー表示
 
 set encoding=utf-8      "UTF-8
+set cursorline          "カーソル行を反転
 set nocompatible        "vi非互換モード"
 set noerrorbells        "エラー時にベルを鳴らさない
 set novisualbell        "ビジュアルベルの抑止
