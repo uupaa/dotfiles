@@ -3,19 +3,21 @@
 syntax on               "カラー表示
 
 set encoding=utf-8      "UTF-8
+set scrolloff=1         "スクロール時の余白
+set autoread            "更新されたら自動で再読み込み
 set cursorline          "カーソル行を反転
-set nocompatible        "vi非互換モード"
+set nocompatible        "vi非互換モード
 set noerrorbells        "エラー時にベルを鳴らさない
 set novisualbell        "ビジュアルベルの抑止
 set visualbell t_vb=
-set shortmess=t         "'Press RETURN or enter command to continue' を表示しない"
-set history=100         "保存するコマンド数"
-set wildmode=list:longest "コマンドライン補完をシェルと同じに"
-set magic               "正規表現使用時に magic モードにする"
+set shortmess=t         "'Press RETURN or enter command to continue' を表示しない
+set history=100         "保存するコマンド数
+set wildmode=list:longest "コマンドライン補完をシェルと同じに
+set magic               "正規表現使用時に magic モードにする
 set cindent             "インデントを有効にする
-set iminsert=1          "日本語入力状態でもEscでコマンドモードへ"
+set iminsert=1          "日本語入力状態でもEscでコマンドモードへ
 set statusline=%F%m%r%h%w\ {\ code:%{&fileencoding},\ type:%Y,\ x:%03v,\ y:%03p%%,\ hex:%04B\ } " path { type:filetype, x:cols, y:rows%, hex:charcode }
-set showmatch           "対応する括弧に一時的に移動"
+set showmatch           "対応する括弧に一時的に移動
 set backup
 set backupdir=$HOME/backup/vim
 set number              "行番号表示
@@ -36,8 +38,8 @@ set noincsearch         "検索文字列入力時に順次対象文字列にヒ�
 set nohlsearch          "検索結果文字列の非ハイライト表示
 set noswapfile          "スワップファイルを作成しない
 set clipboard=unnamed,autoselect " ヤンクでクリップボードにコピーする
-set incsearch           "検索してすぐにその単語の所まで飛ぶ"
-set hlsearch            "検索ワードをハイライトする"
+set incsearch           "検索してすぐにその単語の所まで飛ぶ
+set hlsearch            "検索ワードをハイライトする
 
 " 2byteコードでカーソル位置がずれないように
 if exists('&ambiwidth')
@@ -153,3 +155,32 @@ nnoremap <silent> <C-w><Right> :vsp<CR>
 set list
 "set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
+
+" ノーマルモードで gf (カーソル下のファイル名を直接開く)
+" http://nanasi.jp/articles/howto/file/expand.html
+
+" :grep や :make の実行後、自動的に QuickFix ウィンドウを開く
+command! -nargs=1 Grep call s:Grep("grep", <f-args>)
+function! s:Grep(cmd, arg)
+ exe "sil " . cmd . " ". a:arg
+ if len(getqflist()) == 0
+   echohl WarningMsg
+   echomsg "No match found."
+   echohl None
+ else
+  cw
+  redraw!
+ endif
+endfunction
+
+
+" <C-Space>でomni補完 TODO:検証
+"imap <C-Space> <C-x><C-o>
+
+" vv で単語をヤンク
+nnoremap vv vawy
+" vv/ で単語をヤンクして下方検索
+nnoremap vv/ vawy*
+" vv* で単語をヤンクして上方検索
+nnoremap vv# vawy#
+
