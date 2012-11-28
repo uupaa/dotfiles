@@ -4,7 +4,9 @@ syntax on               "カラー表示
 
 set encoding=utf-8      "UTF-8
 set nocompatible        "vi非互換モード"
-set noerrorbells        "エラー時にベルを鳴らさない"
+set noerrorbells        "エラー時にベルを鳴らさない
+set novisualbell        "ビジュアルベルの抑止
+set visualbell t_vb=
 set shortmess=t         "'Press RETURN or enter command to continue' を表示しない"
 set history=100         "保存するコマンド数"
 set wildmode=list:longest "コマンドライン補完をシェルと同じに"
@@ -45,9 +47,9 @@ endif
 nnoremap <ESC><ESC> :nohlsearch<CR>
 
 " mac vim で <Leader>(円記号) を使用可能にする
-if has('gui_macvim')
+"if has('gui_macvim')
     let mapleader='¥'
-endif
+"endif
 
 " nnoremap <M-f> <C-f>
 

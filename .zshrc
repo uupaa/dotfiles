@@ -82,6 +82,10 @@ alias vv='/Applications/MacVim.app/Contents/MacOS/MacVim -g'
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim='env_LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
+alias grunt='/usr/local/share/npm/bin/grunt'
+alias jshint='/usr/local/share/npm/bin/jshint'
+
+
 # ctags
 # ctags -R でtags ファイルを生成
 # :!ctags や CTRL + ] でタグファイル検索

@@ -5,7 +5,7 @@ set imdisable           " IMを無効化
 set transparency=3      " 透明度を指定
 set antialias
 set guifont=Monaco:h12
-set visualbell t_vb=
+"set visualbell t_vb=
 
 " colorscheme macvim
 
