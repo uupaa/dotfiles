@@ -8,12 +8,6 @@ set guifont=Monaco:h12
 "set visualbell t_vb=
 
 " colorscheme macvim
-
-" dark にしたければ以下を有効に
-" set background=dark
-" light にしたければ以下を有効に
-""set background=light
-""colorscheme solarized
 colorscheme developer
 
 " 起動時にフルスクリーンモードにする
@@ -22,4 +16,5 @@ colorscheme developer
 set lines=40
 set columns=120
 
+" mac vim でバックスラッシュは option + \
 
