@@ -173,16 +173,54 @@ function! s:Grep(cmd, arg)
  endif
 endfunction
 
+" q/ で検索を開始し、p でヤンクした文字列を貼り付け
+" q/ で検索を開始し、
+
+
+
 
 " <C-Space>でomni補完 TODO:検証
 "imap <C-Space> <C-x><C-o>
 
 " vv で単語をヤンク
-nnoremap vv vawy
+nnoremap vv viwy
 " vv/ で単語をヤンクして下方検索
-nnoremap vv/ vawy*
+"" nnoremap vv/ viwy*
+nnoremap vv/ viwy*
+
+
+
+
 " vv* で単語をヤンクして上方検索
-nnoremap vv# vawy#
+nnoremap vv# viwy#
+
+" vd で単語を削除
+nnoremap vd viw<Del>
+
+
+
+
+" CTRL+hjkl でウインドウ上下左右に移動
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+
+" :reg でヤンク(レジスタ)の一覧を表示
+" "ay で レジスタa にヤンク
+" "ap で レジスタa の内容でペースト
+" <C-r>" で ヤンクした内容をペースト
+" <C-r>a で レジスタa の内容をペースト
+" <C-r>/ で 検索文字列をペースト
+" <C-r>* で クリップボードの内容をペースト
+
+
+" nnoremap <silent> ciy ciw<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
+nnoremap <silent> cy   ce<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
+vnoremap <silent> cy   c<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
+
+
 
 
 
