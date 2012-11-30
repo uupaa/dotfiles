@@ -80,7 +80,8 @@ alias vv='/Applications/MacVim.app/Contents/MacOS/MacVim -g'
 # mac-vim kaoriya http://code.google.com/p/macvim-kaoriya/
 # alias vi='vim'
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-alias vim='env_LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+#alias vim='env_LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+alias vim="mvim --remote-tab-silent"
 
 alias grunt='/usr/local/share/npm/bin/grunt'
 alias jshint='/usr/local/share/npm/bin/jshint'

@@ -32,7 +32,7 @@ set expandtab           "タブの代わりに空白文字挿入
 set ts=4 sw=4 sts=0     "タブは半角4文字分のスペース
 set ignorecase          "検索文字列が小文字の場合は大文字小文字を区別なく検索する
 set smartcase           "検索文字列に大文字が含まれている場合は区別して検索する
-"set wrap                "長い行を折り返す
+set nowrap              "長い行を折り返さない
 set wrapscan            "検索時に最後まで行ったら最初に戻る
 set noincsearch         "検索文字列入力時に順次対象文字列にヒットさせない
 set nohlsearch          "検索結果文字列の非ハイライト表示
