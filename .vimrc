@@ -14,7 +14,9 @@ set shortmess=t         "'Press RETURN or enter command to continue' を表示�
 set history=100         "保存するコマンド数
 set wildmode=list:longest "コマンドライン補完をシェルと同じに
 set magic               "正規表現使用時に magic モードにする
-set cindent             "インデントを有効にする
+"set cindent             "インデントを有効にする
+"set smartindent
+"set cinoptions+=:0,g0   "http://d.hatena.ne.jp/alwei/20111106/1320595940
 set iminsert=1          "日本語入力状態でもEscでコマンドモードへ
 set statusline=%F%m%r%h%w\ {\ code:%{&fileencoding},\ type:%Y,\ x:%03v,\ y:%03p%%,\ hex:%04B\ } " path { type:filetype, x:cols, y:rows%, hex:charcode }
 set showmatch           "対応する括弧に一時的に移動
@@ -27,7 +29,6 @@ set ruler               "ルーラーの表示
 set showcmd             "入力中のコマンドをステータスに表示する
 set showmatch           "括弧入力時の対応する括弧を表示
 set laststatus=2        "ステータスラインを常に表示
-"set smartindent         "オートインデント
 set expandtab           "タブの代わりに空白文字挿入
 set ts=4 sw=4 sts=0     "タブは半角4文字分のスペース
 set ignorecase          "検索文字列が小文字の場合は大文字小文字を区別なく検索する
@@ -216,6 +217,7 @@ nnoremap <C-l> <C-w>l
 " <C-r>* で クリップボードの内容をペースト
 
 
+" ヤンクしておき、単語の上で cy で置換
 " nnoremap <silent> ciy ciw<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
 nnoremap <silent> cy   ce<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
 vnoremap <silent> cy   c<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
