@@ -184,3 +184,19 @@ nnoremap vv/ vawy*
 " vv* で単語をヤンクして上方検索
 nnoremap vv# vawy#
 
+
+
+
+" \w で カーソル下のアドレスを開く
+" http://example.com/
+function! OpenWWWAddress()
+  let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;:]*')
+  echo s:uri
+  if s:uri != ""
+    exec "!open \"" . s:uri . "\""
+  else
+    echo "No URI found in line."
+  endif
+endfunction
+
+map <Leader>w :call OpenWWWAddress()<CR>
