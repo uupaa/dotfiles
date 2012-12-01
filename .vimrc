@@ -15,13 +15,13 @@ set history=100         "保存するコマンド数
 set wildmode=list:longest "コマンドライン補完をシェルと同じに
 set magic               "正規表現使用時に magic モードにする
 "set cindent             "インデントを有効にする
-"set smartindent
+set smartindent
 "set cinoptions+=:0,g0   "http://d.hatena.ne.jp/alwei/20111106/1320595940
 set iminsert=1          "日本語入力状態でもEscでコマンドモードへ
 set statusline=%F%m%r%h%w\ {\ code:%{&fileencoding},\ type:%Y,\ x:%03v,\ y:%03p%%,\ hex:%04B\ } " path { type:filetype, x:cols, y:rows%, hex:charcode }
 set showmatch           "対応する括弧に一時的に移動
-set backup
-set backupdir=$HOME/backup/vim
+"set backup
+"set backupdir=$HOME/backup/vim
 set number              "行番号表示
 set showmode            "モード表示
 set title               "編集中のファイル名を表示
