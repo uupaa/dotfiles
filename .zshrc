@@ -125,3 +125,6 @@ function g() {
     egrep -r "$1" .
 }
 
+function git_diff() {
+    git diff --no-ext_diff -w "$@" | vim -R -
+}

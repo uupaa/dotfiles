@@ -1,0 +1,11 @@
+[user]
+	name = uupaa
+	email = uupaa.js@gmail.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[diff]
+    external = ~/dotfiles/git_diff_wrapper
+[pager]
+    diff =
