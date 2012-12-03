@@ -87,6 +87,11 @@ alias grunt='/usr/local/share/npm/bin/grunt'
 alias jshint='/usr/local/share/npm/bin/jshint'
 
 
+# git flow alias
+alias gitfs='git flow feature start'
+alias gitff='git flow feature finish'
+
+
 # ctags
 # ctags -R でtags ファイルを生成
 # :!ctags や CTRL + ] でタグファイル検索
