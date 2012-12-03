@@ -125,6 +125,24 @@ function g() {
     egrep -r "$1" .
 }
 
+# git diff を vimdiff で見る
+# 1. cd ~
+# 2. mv .gitconfig dotfiles
+# 3. ln -s dotfiles/.gitconfig .
+# 4. vi dotfiles/.gitconfig
+#
+# [diff]
+#   external = git_diff_wrapper
+# [pager]
+#   diff =
+#
+# 4. chmod +x dotfiles/.gitconfig
+# 5. vi git_diff_wrapper
+#
+# #!/bin/sh
+#
+# vimdiff "$2" "$5"
+#
 function git_diff() {
     git diff --no-ext_diff -w "$@" | vim -R -
 }
