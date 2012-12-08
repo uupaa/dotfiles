@@ -15,6 +15,8 @@ set history=100         "保存するコマンド数
 set wildmode=list:longest "コマンドライン補完をシェルと同じに
 set colorcolumn=80      "80文字目を強調表示
 set magic               "正規表現使用時に magic モードにする
+set matchtime=1         "括弧対応??
+set noshowmatch         "括弧
 "set cindent             "インデントを有効にする
 "set smartindent
 "set cinoptions+=:0,g0   "http://d.hatena.ne.jp/alwei/20111106/1320595940
