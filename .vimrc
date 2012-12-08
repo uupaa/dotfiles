@@ -13,6 +13,7 @@ set visualbell t_vb=
 set shortmess=t         "'Press RETURN or enter command to continue' を表示しない
 set history=100         "保存するコマンド数
 set wildmode=list:longest "コマンドライン補完をシェルと同じに
+set colorcolumn=80      "80文字目を強調表示
 set magic               "正規表現使用時に magic モードにする
 "set cindent             "インデントを有効にする
 "set smartindent
@@ -240,3 +241,10 @@ function! OpenWWWAddress()
 endfunction
 
 map <Leader>w :call OpenWWWAddress()<CR>
+
+
+
+" 括弧の対応を強制解除
+let loaded_matchparen = 1
+
+
