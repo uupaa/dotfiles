@@ -16,7 +16,8 @@ set wildmode=list:longest "コマンドライン補完をシェルと同じに
 set colorcolumn=80      "80文字目を強調表示
 set magic               "正規表現使用時に magic モードにする
 set matchtime=1         "括弧対応??
-set noshowmatch         "括弧
+set noshowmatch         "括弧の対応を解除
+let loaded_matchparen=1 "括弧の対応を強制解除
 "set cindent             "インデントを有効にする
 "set smartindent
 "set cinoptions+=:0,g0   "http://d.hatena.ne.jp/alwei/20111106/1320595940
@@ -246,7 +247,7 @@ map <Leader>w :call OpenWWWAddress()<CR>
 
 
 
-" 括弧の対応を強制解除
-let loaded_matchparen = 1
 
+" カーソル下のパスを開く( gf ) , 元のファイルに戻る CTRL + O
+" カーソル下のパスを新しいウインドウで開く( CTRL+W f ) , 元のファイルに戻る CTRL + O
 
