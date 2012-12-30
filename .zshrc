@@ -61,7 +61,7 @@ cdpath=($HOME)
 HISTSIZE=20000
 SAVEHIST=20000
 HISTFILE=~/.zsh_history
-setopt share_history
+#setopt share_history
 
 ### alias
 # 補完される前にオリジナルのコマンドまで展開してチェックする
