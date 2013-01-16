@@ -22,7 +22,7 @@ let loaded_matchparen=1 "括弧の対応を強制解除
 "set smartindent
 "set cinoptions+=:0,g0   "http://d.hatena.ne.jp/alwei/20111106/1320595940
 set iminsert=1          "日本語入力状態でもEscでコマンドモードへ
-set statusline=%F%m%r%h%w\ {\ code:%{&fileencoding},\ type:%Y,\ x:%03v,\ y:%03p%%,\ hex:%04B\ } " path { type:filetype, x:cols, y:rows%, hex:charcode }
+set statusline=%F%m%r%h%w\ {\ code:%{&fileencoding},\ type:%Y,\ x:%03v,\ y:%03p%%,\ hex:%04B,\ ff:%{&ff}\ } " path { code:utf-8, type:filetype, x:cols, y:rows%, hex:charcode, ff:format }
 set showmatch           "対応する括弧に一時的に移動
 set backup
 set backupdir=$HOME/backup/vim
@@ -250,4 +250,15 @@ map <Leader>w :call OpenWWWAddress()<CR>
 
 " カーソル下のパスを開く( gf ) , 元のファイルに戻る CTRL + O
 " カーソル下のパスを新しいウインドウで開く( CTRL+W f ) , 元のファイルに戻る CTRL + O
+
+" add the repository path
+set rtp+=/path/to/jsx.vim
+
+" when you use a plugin manager (vundle or NeoBundle),
+" just declare the repository path in your .vimrc
+
+" for vundle
+Bundle 'jsx/jsx.vim.git'
+
+
 
