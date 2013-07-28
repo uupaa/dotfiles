@@ -36,6 +36,9 @@ setopt append_history
 # ディレクトリ名だけで､ディレクトリの移動をする｡
 setopt auto_cd
 
+# cd - [TAB] でディレクトリを表示する
+setopt auto_pushd
+
 # ^Iで補完候補を表示（曖昧補完）
 setopt auto_list
 
@@ -90,6 +93,8 @@ alias jshint='/usr/local/share/npm/bin/jshint'
 # git flow alias
 alias gitfs='git flow feature start'
 alias gitff='git flow feature finish'
+# git status shortcut
+alias gs='git status'
 
 
 # ctags
@@ -148,4 +153,20 @@ function git_diff() {
 }
 
 ### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+PATH="/usr/local/heroku/bin:$PATH"
+PATH="/usr/local/share/npm/bin:$PATH"
+NODE_PATH="/usr/local/share/npm/lib/node_modules/ejs"
+
+
+### android-sdk path
+PATH="$PATH:/Applications/android-sdk/platform-tools"
+
+
+
+alias jsxx='jsx --executable web --output '
+
+### ignore CFURLCopyResourcePropertyForKey failed because it was passed this URL which has no scheme:
+alias gitk='gitk 2>/dev/null'
+
+alias chromedebug='adb forward tcp:9222 localabstruct:chrome_devtools_remote'
+

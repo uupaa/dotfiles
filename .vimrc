@@ -2,6 +2,13 @@
 
 syntax on               "カラー表示
 
+
+" tabstop settings
+set tabstop=4
+augroup vimrc
+autocmd! FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+augroup END
+
 set encoding=utf-8      "UTF-8
 set scrolloff=1         "スクロール時の余白
 set autoread            "更新されたら自動で再読み込み
@@ -22,7 +29,8 @@ let loaded_matchparen=1 "括弧の対応を強制解除
 "set smartindent
 "set cinoptions+=:0,g0   "http://d.hatena.ne.jp/alwei/20111106/1320595940
 set iminsert=1          "日本語入力状態でもEscでコマンドモードへ
-set statusline=%F%m%r%h%w\ {\ code:%{&fileencoding},\ type:%Y,\ x:%03v,\ y:%03p%%,\ hex:%04B,\ ff:%{&ff}\ } " path { code:utf-8, type:filetype, x:cols, y:rows%, hex:charcode, ff:format }
+"set statusline=%F%m%r%h%w\ {%{&fileencoding},\ %Y,\ %03v,\ %03p%%,\ %04B,\ %{&ff}} " path {utf-8, JAVASCRIPT, cols, rows%, charcode, format}
+set statusline=%F%m%r%h%w\ {%{&fileencoding},%Y,%03v,%03p%%,%04B,%{&ff}} " path {utf-8, JAVASCRIPT, cols, rows%, charcode, format}
 set showmatch           "対応する括弧に一時的に移動
 set backup
 set backupdir=$HOME/backup/vim
@@ -74,7 +82,11 @@ nnoremap <ESC><ESC> :nohlsearch<CR>
 "                    QuickFixを閉じるには :q 
 "                    :cn で 次のQucikFixの項目に移動する
 "                    :cp で 前のQuickFixの項目に移動する
-set grepprg=ack
+"set grepprg=ack
+
+" ag で grep する
+" vim上からは、 :Ag [option] pattern で検索できる
+set grepprg=ag\ -a
 
 
 "ファイルを開いた際に、前回終了時の行で起動
@@ -206,7 +218,7 @@ nnoremap vd viw<Del>
 
 
 
-" CTRL+hjkl でウインドウ上下左右に移動
+" CTRL+hjkl で上下左右のウインドウに移動
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -232,7 +244,7 @@ vnoremap <silent> cy   c<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
 
 
 
-" \w で カーソル下のアドレスを開く
+" ￥w で カーソル下のURLをブラウザで開く
 " http://example.com/
 function! OpenWWWAddress()
   let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;:]*')
@@ -259,7 +271,12 @@ set rtp+=/path/to/jsx.vim
 " just declare the repository path in your .vimrc
 
 " for vundle
-Bundle 'jsx/jsx.vim.git'
+" Bundle 'jsx/jsx.vim.git'
+Bundle 'rking/ag.vim'
+"Bundle 'vim-colors-solarized' 
+
+
+
 
 
 
