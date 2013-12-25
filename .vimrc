@@ -4,10 +4,14 @@ syntax on               "カラー表示
 
 
 " tabstop settings
+" HTML を2 tab にする
 set tabstop=4
-augroup vimrc
-autocmd! FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+augroup HTML_2_INDENT
+    autocmd!
+    autocmd FileType html setlocal shiftwidth=2 tabstop=4 softtabstop=2
 augroup END
+
+
 
 set encoding=utf-8      "UTF-8
 set scrolloff=1         "スクロール時の余白
@@ -54,6 +58,16 @@ set noswapfile          "スワップファイルを作成しない
 set clipboard=unnamed,autoselect " ヤンクでクリップボードにコピーする
 set incsearch           "検索してすぐにその単語の所まで飛ぶ
 set hlsearch            "検索ワードをハイライトする
+
+" open したファイルのディレクトリにカレントディレクトリを移動する
+" http://d.hatena.ne.jp/homaju/20130131/1359614451
+" autocmd BufEnter * execute ":lcd " . expand("%:p:h") 
+" fnameescape() で、パスがスペースを含む場合にエラーがでないようにする
+" autocmd BufEnter * execute 'lcd ' fnameescape(expand('%:p:h'))
+augroup setcwd
+    autocmd!
+    autocmd BufEnter * execute 'lcd ' fnameescape(expand('%:p:h'))
+augroup END
 
 " 2byteコードでカーソル位置がずれないように
 if exists('&ambiwidth')
@@ -105,17 +119,11 @@ endfunction
 "autocmd QuickfixCmdPost vimgrep call OpenModifiableQF()
 autocmd QuickfixCmdPost grep call OpenModifiableQF()
 
-" ファイルを開いた時にファイルのカレントディレクトリをワーキングディレクトリにする
-augroup grlcd
-    autocmd!
-    autocmd BufEnter * lcd %:p:h
-augroup end
-
 
 " ---------------------------------------------------
 " NERDTree - http://blog.livedoor.jp/sasata299/archives/51711587.html
 " NERDTree を F9 でトグル, または バクスラp で起動
-" :nmap <F9> :NERDTreeToggle<CR>
+:nmap <F9> :NERDTreeToggle<CR>
 :nmap <silent> <Leader>p :NERDTreeToggle<CR>
 
 " :NERDTree / :NERDTreeToggle
@@ -144,7 +152,8 @@ Bundle 'mileszs/ack.vim'
 " ファイルオープン時にNERDTreeを起動
 let file_name = expand("%")
 if has('vim_starting')
-    autocmd VimEnter * NERDTree ./
+"   autocmd VimEnter * NERDTree ./
+    autocmd GUIEnter * NERDTree ./
 endif
 
 
@@ -168,6 +177,15 @@ nnoremap <silent> <C-w><Right> :vsp<CR>
 
 " #h とタイプすることでHTMLのひな形を挿入する
 :ab #h <!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" type="text/css" href="a.css" /><script src="a.js"></script></head><body> </body></html>
+
+" 拡張子がjsのファイルを読み込むと、雛形を挿入する
+augroup insertTemplate
+    autocmd!
+    autocmd BufNewFile *.js 0r $HOME/.vimtemplate/default.js
+    autocmd BufNewFile index.html 0r $HOME/.vimtemplate/index.html
+    autocmd BufNewFile index.mb.html 0r $HOME/.vimtemplate/index.mb.html
+    autocmd BufNewFile package.json 0r $HOME/.vimtemplate/package.json
+augroup END
 
 " tab を表示する
 set list
@@ -239,12 +257,15 @@ nnoremap <C-l> <C-w>l
 nnoremap <silent> cy   ce<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
 vnoremap <silent> cy   c<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
 
+" 連続でペーストできるように 0レジスタを使う
+" http://qiita.com/fukajun/items/bd97a9b963dae40b63f5
+"vnoremap <silent> <C-p> "0p<CR>
 
 
 
 
-
-" ￥w で カーソル下のURLをブラウザで開く
+" \w か \\ で カーソル下のURLをブラウザで開く
+"
 " http://example.com/
 function! OpenWWWAddress()
   let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;:]*')
@@ -257,6 +278,7 @@ function! OpenWWWAddress()
 endfunction
 
 map <Leader>w :call OpenWWWAddress()<CR>
+map <Leader><Leader> :call OpenWWWAddress()<CR>
 
 
 
@@ -278,5 +300,50 @@ Bundle 'rking/ag.vim'
 
 
 
+" 文字数カウント
+" http://n.blueblack.net/articles/2012-06-15_01_vim_character_count/
+augroup CharCounter
+    autocmd!
+    autocmd BufNew,BufEnter,BufWrite,InsertLeave * call <SID>Update()
+augroup END
+
+function! s:Update()
+    let b:charCounterCount = s:CharCount()
+endfunction
+
+function! s:CharCount()
+    let l:result = 0
+    for l:linenum in range(0, line('$'))
+        let l:line = getline(l:linenum)
+        let l:result += strlen(substitute(l:line, ".", "x", "g"))
+    endfor
+    return l:result
+endfunction
+"set statusline=%F%m%r%h%w\ {%{&fileencoding},%Y,%03v,%03p%%,%04B,%{&ff},%{b:charCounterCount}} " path {utf-8, JAVASCRIPT, cols, rows%, charcode, format, count}
+set statusline=%F%m%r%h%w\ {%{&fileencoding},%Y,%03v,%03p%%,%04B,%{&ff}} " path {utf-8, JAVASCRIPT, cols, rows%, charcode, format}
 
 
+" JSX
+augroup JSX
+    autocmd!
+    autocmd FileType jsx compiler jsx
+augroup END
+
+" add the repository path
+set rtp+=~/dotfiles/jsx.vim
+
+" when you use a plugin manager (vundle or NeoBundle),
+" just declare the repository path in your .vimrc
+
+" for vundle
+Bundle 'git://github.com/jsx/jsx.vim.git'
+
+" for NeoBundle
+" NeoBundle 'git://github.com/jsx/jsx.vim.git'
+
+
+" :w -> jshint
+" https://github.com/scrooloose/syntastic
+" execute pathogen#infect()
+" http://www.serendip.ws/archives/6180
+" let g:syntastic_mode_map = { "mode" : "active", "active_filetypes" : ["javascript", "json"] }

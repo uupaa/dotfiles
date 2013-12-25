@@ -1,0 +1,19 @@
+{
+  "name"          : "{{package}}",
+  "version"       : "1.0.0",
+  "description"   : "...",
+  "url"           : "https://github.com/uupaa/...",
+  "keywords"      : ["uupaa", "..."],
+  "author"        : "uupaa <uupaa.js@gmail.com>",
+  "license"       : "MIT",
+  "repository"    : { "type": "git", "url": "https://github.com/uupaa/....git" },
+  "contributors"  : [],
+  "dependencies"  : {},
+  "lib"           : ".",
+  "main"          : "....js",
+  "scripts": {
+    "start":        "NODE_ENV=production NODE_PATH=lib node --harmony",
+    "test":         "NODE_ENV=production NODE_PATH=lib node --harmony ./test/basic.js"
+  }
+}
+

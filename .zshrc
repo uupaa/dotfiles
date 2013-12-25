@@ -36,9 +36,6 @@ setopt append_history
 # ディレクトリ名だけで､ディレクトリの移動をする｡
 setopt auto_cd
 
-# cd - [TAB] でディレクトリを表示する
-setopt auto_pushd
-
 # ^Iで補完候補を表示（曖昧補完）
 setopt auto_list
 
@@ -88,11 +85,14 @@ alias vim="mvim --remote-tab-silent"
 
 alias grunt='/usr/local/share/npm/bin/grunt'
 alias jshint='/usr/local/share/npm/bin/jshint'
+alias ruby='/usr/local/bin/ruby'
 
 
 # git flow alias
-alias gitfs='git flow feature start'
-alias gitff='git flow feature finish'
+# gitflow {{branch-name}}
+alias gitflow='git flow feature start'
+# gitend {{branch-name}}
+alias gitend='git flow feature finish'
 # git status shortcut
 alias gs='git status'
 
@@ -148,10 +148,14 @@ function g() {
 #
 # vimdiff "$2" "$5"
 #
+
+# git diff
 function git_diff() {
-    git diff --no-ext_diff -w "$@" | vim -R -
+    git diff --no-ext-diff -w "$@" | vim -R -
 }
 
+### Add $HOME/dotfile
+PATH="$HOME/dotfiles:$PATH"
 ### Added by the Heroku Toolbelt
 PATH="/usr/local/heroku/bin:$PATH"
 PATH="/usr/local/share/npm/bin:$PATH"
@@ -163,10 +167,26 @@ PATH="$PATH:/Applications/android-sdk/platform-tools"
 
 
 
+# JSX
 alias jsxx='jsx --executable web --output '
 
 ### ignore CFURLCopyResourcePropertyForKey failed because it was passed this URL which has no scheme:
 alias gitk='gitk 2>/dev/null'
 
-alias chromedebug='adb forward tcp:9222 localabstruct:chrome_devtools_remote'
+#alias chromedebug='adb forward tcp:9222 localabstruct:chrome_devtools_remote'
+
+
+# Flash debug player
+alias flash='open -a /Applications/Flash\ Player.app '
+alias flashlog='tail -f ~/Library/Preferences/Macromedia/Flash\ Player/Logs/flashlog.txt'
+
+# pandoc alias -> http://0.0.0.0/oss/reveal.js/out.html
+#alias pandoc="pandoc --section-divs -s -t html5 --template ~/oss/pandoc_reveal/template.revealjs ~/oss/myslide.md -o ~/oss/reveal.js/out.html ; open ~/oss/reveal.js/out.html"
+#alias slide="vim ~/oss/reveal.js/slide.md ; pandoc --section-divs -s -t html5 --template ~/oss/pandoc_reveal/template.revealjs ~/oss/myslide.md -o ~/oss/reveal.js/out.html ; open http://0.0.0.0/oss/reveal.js/out.html"
+alias slide="vim ~/oss/reveal.js/slide.md ; pandoc --section-divs -s -t html5 --template ~/oss/pandoc_reveal/template.revealjs ~/oss/reveal.js/slide.md -o ~/oss/reveal.js/out.html ; open http://0.0.0.0/oss/reveal.js/out.html"
+alias mkslide="pandoc --section-divs -s -t html5 --template ~/oss/pandoc_reveal/template.revealjs ~/oss/reveal.js/slide.md -o ~/oss/reveal.js/out.html"
+
+# set git author user.name and user.email
+alias git-user="git config user.name uupaa ; git config user.email uupaa.js@gmail.com"
+
 
