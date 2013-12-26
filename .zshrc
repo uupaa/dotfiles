@@ -1,3 +1,4 @@
+
 # ここみて設定してます
 # https://github.com/dzfl/dotfiles/blob/master/.zshrc
 
@@ -190,3 +191,46 @@ alias mkslide="pandoc --section-divs -s -t html5 --template ~/oss/pandoc_reveal/
 alias git-user="git config user.name uupaa ; git config user.email uupaa.js@gmail.com"
 
 
+#~/dotfiles/.git-prompt.sh
+#export GIT_PS1_SHOWDIRTYSTATE=true
+#export PS1='\[\033[40;1;32m\]\u\[\033[2;32m\]@\[\033[0m\]\[\033[40;32m\]\h \[\033[1;36m\]\w \[\033[31m\]$(__git_ps1 "[%s]")\[\033[00m\] \[\033[0m\]\[\033[40;2;37m\]`date +"%Y/%m/%d %p %H:%M:%S"` \[\033[0m\]\n\\$ '
+#export PS1=$PS1
+
+# https://gist.github.com/uupaa/97ded5812fc9d2f93fbb
+#
+# Show branch name in Zsh's right prompt
+#
+#
+autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
+
+setopt prompt_subst
+setopt re_match_pcre
+
+function rprompt-git-current-branch {
+    local name st color gitdir action
+    if [[ "$PWD" =~ '/\.git(/.*)?$' ]]; then
+        return
+    fi
+    name=`git rev-parse --abbrev-ref=loose HEAD 2> /dev/null`
+    if [[ -z $name ]]; then
+        return
+    fi
+    gitdir=`git rev-parse --git-dir 2> /dev/null`
+    action=`VCS_INFO_git_getaction "$gitdir"` && action="($action)"
+
+    user=`git config --get user.name 2> /dev/null`
+    st=`git status 2> /dev/null`
+    if [[ "$st" =~ "(?m)^nothing to" ]]; then
+        color=%F{green}
+    elif [[ "$st" =~ "(?m)^nothing added" ]]; then
+        color=%F{yellow}
+    elif [[ "$st" =~ "(?m)^# Untracked" ]]; then
+        color=%B%F{red}
+    else
+        color=%F{red}
+    fi
+
+    echo "$user $color$name$action%f%b "
+}
+
+RPROMPT='[`rprompt-git-current-branch`%~]'
