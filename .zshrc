@@ -87,6 +87,7 @@ alias vim="mvim --remote-tab-silent"
 alias grunt='/usr/local/share/npm/bin/grunt'
 alias jshint='/usr/local/share/npm/bin/jshint'
 alias ruby='/usr/local/bin/ruby'
+alias npm-update='rm -rf node_modules;npm install'
 
 
 # git flow alias
