@@ -143,6 +143,7 @@ call vundle#rc()
 Bundle 'scrooloose/nerdtree'
 " Bundle 'altercation/vim-colors-solarized'
 Bundle 'mileszs/ack.vim'
+Bundle 'typescript-vim'
 " Ack [option]{pattern}[dir]
 " 例: Ack function
 " コマンドラインからは ack function <CR>
@@ -347,3 +348,11 @@ Bundle 'git://github.com/jsx/jsx.vim.git'
 " execute pathogen#infect()
 " http://www.serendip.ws/archives/6180
 " let g:syntastic_mode_map = { "mode" : "active", "active_filetypes" : ["javascript", "json"] }
+
+
+
+" TypeScript
+autocmd BufRead,BufNewFile *.ts set filetype=typescript
+
+
+

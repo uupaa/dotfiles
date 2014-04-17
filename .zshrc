@@ -2,6 +2,9 @@
 # ここみて設定してます
 # https://github.com/dzfl/dotfiles/blob/master/.zshrc
 
+# JAVA
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home"
+
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
 
@@ -87,14 +90,13 @@ alias vim="mvim --remote-tab-silent"
 alias grunt='/usr/local/share/npm/bin/grunt'
 alias jshint='/usr/local/share/npm/bin/jshint'
 alias ruby='/usr/local/bin/ruby'
-alias npm-update='rm -rf node_modules;npm install'
 
 
 # git flow alias
 # gitflow {{branch-name}}
 alias gitflow='git flow feature start'
 # gitend {{branch-name}}
-alias gitend='git flow feature finish'
+alias gitend='git flow feature finish -k'
 # git status shortcut
 alias gs='git status'
 
@@ -157,15 +159,19 @@ function git_diff() {
 }
 
 ### Add $HOME/dotfile
-PATH="$HOME/dotfiles:$PATH"
-### Added by the Heroku Toolbelt
-PATH="/usr/local/heroku/bin:$PATH"
-PATH="/usr/local/share/npm/bin:$PATH"
-NODE_PATH="/usr/local/share/npm/lib/node_modules/ejs"
+#PATH="$HOME/dotfiles:$PATH"
+#PATH="/usr/local/share/npm/bin:$PATH"
 
+export NODE_PATH="/usr/local/lib/node_modules"
 
 ### android-sdk path
 PATH="$PATH:/Applications/android-sdk/platform-tools"
+
+export PATH="/usr/local/bin:$PATH"
+
+
+
+
 
 
 
@@ -185,8 +191,10 @@ alias flashlog='tail -f ~/Library/Preferences/Macromedia/Flash\ Player/Logs/flas
 # pandoc alias -> http://0.0.0.0/oss/reveal.js/out.html
 #alias pandoc="pandoc --section-divs -s -t html5 --template ~/oss/pandoc_reveal/template.revealjs ~/oss/myslide.md -o ~/oss/reveal.js/out.html ; open ~/oss/reveal.js/out.html"
 #alias slide="vim ~/oss/reveal.js/slide.md ; pandoc --section-divs -s -t html5 --template ~/oss/pandoc_reveal/template.revealjs ~/oss/myslide.md -o ~/oss/reveal.js/out.html ; open http://0.0.0.0/oss/reveal.js/out.html"
-alias slide="vim ~/oss/reveal.js/slide.md ; pandoc --section-divs -s -t html5 --template ~/oss/pandoc_reveal/template.revealjs ~/oss/reveal.js/slide.md -o ~/oss/reveal.js/out.html ; open http://0.0.0.0/oss/reveal.js/out.html"
-alias mkslide="pandoc --section-divs -s -t html5 --template ~/oss/pandoc_reveal/template.revealjs ~/oss/reveal.js/slide.md -o ~/oss/reveal.js/out.html"
+#alias slide="vim ~/oss/reveal.js/slide.md ; pandoc --section-divs -s -t html5 --template ~/oss/pandoc_reveal/template.revealjs ~/oss/reveal.js/slide.md -o ~/oss/reveal.js/out.html ; open http://0.0.0.0/oss/reveal.js/out.html"
+#alias mkslide="pandoc --section-divs -s -t html5 --template ~/oss/pandoc_reveal/template.revealjs ~/oss/reveal.js/slide.md -o ~/oss/reveal.js/out.html"
+#alias taskslide="pandoc --section-divs -s -t html5 --template ~/oss/my/Task.js/slide/template.html ~/oss/my/Task.js/slide/index.md -o ~/oss/my/Task.js/slide/index.html"
+#alias taskslide="pandoc --section-divs -s -t html5 --template ~/oss/my/Task.js/slide/template.html ./index.md -o ~/oss/my/Task.js/slide/index.html"
 
 # set git author user.name and user.email
 alias git-user="git config user.name uupaa ; git config user.email uupaa.js@gmail.com"
@@ -235,3 +243,20 @@ function rprompt-git-current-branch {
 }
 
 RPROMPT='[`rprompt-git-current-branch`%~]'
+
+
+#
+#alias git-init='git-user; rm .gitignore .npmignore .jshintrc; ../Xxx.js/clone.js; git add .gitignore .npmignore .jshintrc README.md LICENSE'
+alias git-user="git config user.name uupaa ; git config user.email uupaa.js@gmail.com"
+
+
+alias install="rm -rf node_modules; npm install"
+alias build="npm run build"
+alias test="npm run test"
+alias lint="npm run lint"
+alias all="install;build;test;lint"
+
+alias nw="nodewebkit"
+
+alias tt="tig status"
+
