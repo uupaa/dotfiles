@@ -249,6 +249,9 @@ RPROMPT='[`rprompt-git-current-branch`%~]'
 #alias git-init='git-user; rm .gitignore .npmignore .jshintrc; ../Xxx.js/clone.js; git add .gitignore .npmignore .jshintrc README.md LICENSE'
 alias git-user="git config user.name uupaa ; git config user.email uupaa.js@gmail.com"
 
+alias ios-simu="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app/Contents/MacOS/iPhone\ Simulator -SimulateApplication /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/Applications/MobileSafari.app/MobileSafari -u http://example.com"
+
+
 
 alias install="rm -rf node_modules; npm install"
 alias build="npm run build"
@@ -259,4 +262,7 @@ alias all="install;build;test;lint"
 alias nw="nodewebkit"
 
 alias tt="tig status"
+
+alias wm="npm update; npm run test-page; npm run build; npm run test"
+alias pub="git push; npm publish"
 

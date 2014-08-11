@@ -223,13 +223,9 @@ endfunction
 nnoremap vv viwy
 " vv/ で単語をヤンクして下方検索
 "" nnoremap vv/ viwy*
-nnoremap vv/ viwy*
-
-
-
-
+" nnoremap vv/ viwy*
 " vv* で単語をヤンクして上方検索
-nnoremap vv# viwy#
+" nnoremap vv# viwy#
 
 " vd で単語を削除
 nnoremap vd viw<Del>
@@ -325,10 +321,10 @@ set statusline=%F%m%r%h%w\ {%{&fileencoding},%Y,%03v,%03p%%,%04B,%{&ff}} " path 
 
 
 " JSX
-augroup JSX
-    autocmd!
-    autocmd FileType jsx compiler jsx
-augroup END
+"augroup JSX
+"    autocmd!
+"    autocmd FileType jsx compiler jsx
+"augroup END
 
 " add the repository path
 set rtp+=~/dotfiles/jsx.vim
@@ -355,4 +351,26 @@ Bundle 'git://github.com/jsx/jsx.vim.git'
 autocmd BufRead,BufNewFile *.ts set filetype=typescript
 
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" multiple-cursors
+"
+" http://qiita.com/sachin21/items/cfcb81bf4d1073429b68
+" NeoBundle 'terryma/vim-multiple-cursors'
+" :BundleInstall
+" :MultipleCursorsFind hoge
+Bundle 'terryma/vim-multiple-cursors'
+"
+" https://github.com/terryma/vim-multiple-cursors
+" key assign
+"   CTRL+n でカーソル下のワードを選択、CTRL+nで次のワードを選択
+"   選択したくない箇所はCTRL+xでスキップできる
+"   複数のワードを選択した状態で c とタイプすると、
+"   複数のワードを一斉に変更できる
+let g:multi_cursor_use_default_mapping=0
+" Default mapping
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
 
