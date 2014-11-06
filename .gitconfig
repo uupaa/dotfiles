@@ -5,7 +5,14 @@
 	diff = auto
 	status = auto
 	branch = auto
+	ui = 1
 [diff]
-    external = ~/dotfiles/git_diff_wrapper
+	external = ~/dotfiles/git_diff_wrapper
 [pager]
-    diff =
+	diff =
+[core]
+	excludesfile = ~/.gitignore_global
+[merge]
+	ff = false
+[push]
+	default = matching
