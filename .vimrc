@@ -135,7 +135,7 @@ autocmd QuickfixCmdPost grep call OpenModifiableQF()
 
 "-----------------------------------
 
-set rtp+=~/.vim/vundle.git/
+set rtp+=~/.vim/vundle/vundle.git/
 call vundle#rc()
 
 " github の任意のリポジトリ
@@ -143,7 +143,7 @@ call vundle#rc()
 Bundle 'scrooloose/nerdtree'
 " Bundle 'altercation/vim-colors-solarized'
 Bundle 'mileszs/ack.vim'
-Bundle 'typescript-vim'
+" Bundle 'typescript-vim'
 " Ack [option]{pattern}[dir]
 " 例: Ack function
 " コマンドラインからは ack function <CR>
@@ -327,13 +327,13 @@ set statusline=%F%m%r%h%w\ {%{&fileencoding},%Y,%03v,%03p%%,%04B,%{&ff}} " path 
 "augroup END
 
 " add the repository path
-set rtp+=~/dotfiles/jsx.vim
+" set rtp+=~/dotfiles/jsx.vim
 
 " when you use a plugin manager (vundle or NeoBundle),
 " just declare the repository path in your .vimrc
 
 " for vundle
-Bundle 'git://github.com/jsx/jsx.vim.git'
+" Bundle 'git://github.com/jsx/jsx.vim.git'
 
 " for NeoBundle
 " NeoBundle 'git://github.com/jsx/jsx.vim.git'
@@ -348,7 +348,7 @@ Bundle 'git://github.com/jsx/jsx.vim.git'
 
 
 " TypeScript
-autocmd BufRead,BufNewFile *.ts set filetype=typescript
+" autocmd BufRead,BufNewFile *.ts set filetype=typescript
 
 
 
