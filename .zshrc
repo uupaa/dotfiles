@@ -205,6 +205,11 @@ alias git-user="git config user.name uupaa ; git config user.email uupaa.js@gmai
 #export PS1='\[\033[40;1;32m\]\u\[\033[2;32m\]@\[\033[0m\]\[\033[40;32m\]\h \[\033[1;36m\]\w \[\033[31m\]$(__git_ps1 "[%s]")\[\033[00m\] \[\033[0m\]\[\033[40;2;37m\]`date +"%Y/%m/%d %p %H:%M:%S"` \[\033[0m\]\n\\$ '
 #export PS1=$PS1
 
+#for zsh-completions
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+
+
 # https://gist.github.com/uupaa/97ded5812fc9d2f93fbb
 #
 # Show branch name in Zsh's right prompt
