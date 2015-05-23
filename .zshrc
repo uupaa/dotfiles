@@ -3,7 +3,8 @@
 # https://github.com/dzfl/dotfiles/blob/master/.zshrc
 
 # JAVA
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home"
+#export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home"
+export JAVA_HODE=`/usr/libexec/java_home -v 1.8.0_25`
 
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
@@ -165,7 +166,7 @@ function git_diff() {
 export NODE_PATH="/usr/local/lib/node_modules"
 
 ### android-sdk path
-PATH="$PATH:/Applications/android-sdk/platform-tools"
+export PATH="$PATH:/Applications/android-sdk/platform-tools"
 
 export PATH="/usr/local/bin:$PATH"
 
@@ -263,4 +264,6 @@ alias tt="tig status"
 
 alias wm="npm update; npm run test-page; npm run build; npm run test"
 alias pub="git push; npm publish"
+
+export NODE_PATH="/usr/local/lib/node_modules"
 

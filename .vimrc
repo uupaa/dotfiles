@@ -38,6 +38,7 @@ set statusline=%F%m%r%h%w\ {%{&fileencoding},%Y,%03v,%03p%%,%04B,%{&ff}} " path 
 set showmatch           "対応する括弧に一時的に移動
 set backup
 set backupdir=$HOME/backup/vim
+set noundofile          "undo フアイルを作成しない
 set number              "行番号表示
 set showmode            "モード表示
 set title               "編集中のファイル名を表示

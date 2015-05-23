@@ -12,7 +12,5 @@
 	diff =
 [core]
 	excludesfile = ~/.gitignore_global
-[merge]
-	ff = false
 [push]
 	default = matching
