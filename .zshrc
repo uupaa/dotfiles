@@ -4,6 +4,7 @@
 
 # JAVA
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home"
+export JRE_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre"
 
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
@@ -86,6 +87,7 @@ alias vv='/Applications/MacVim.app/Contents/MacOS/MacVim -g'
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 #alias vim='env_LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim="mvim --remote-tab-silent"
+alias nw="~/oss/my/node-webkit/node-webkit.app/Contents/MacOS/node-webkit"
 
 alias grunt='/usr/local/share/npm/bin/grunt'
 alias jshint='/usr/local/share/npm/bin/jshint'
@@ -165,9 +167,10 @@ function git_diff() {
 export NODE_PATH="/usr/local/lib/node_modules"
 
 ### android-sdk path
-PATH="$PATH:/Applications/android-sdk/platform-tools"
+export PATH="$PATH:/Applications/android-sdk/platform-tools"
 
 export PATH="/usr/local/bin:$PATH"
+##export PATH="$HOME/.nodebrew/current/bin:$PATH"
 
 
 
@@ -258,14 +261,15 @@ alias ios-simu="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimul
 
 alias install="rm -rf node_modules; npm install"
 alias build="npm run build"
-alias test="npm run test"
 alias lint="npm run lint"
-alias all="install;build;test;lint"
-
-alias nw="nodewebkit"
-
-alias tt="tig status"
-
-alias wm="npm update; npm run test-page; npm run build; npm run test"
 alias pub="git push; npm publish"
+alias tt="tig status"
+alias gg='npm run patch; git add . ; git commit -m "follow WebModule"; git push; npm publish'
+
+# 2015-07
+alias MP4Box="/Applications/Osmo4.app/Contents/MacOS/MP4Box"
+alias nginx_conf="vi /usr/local/etc/nginx/nginx.conf"
+export PATH="$PATH:/usr/local:/usr/local/sbin"
+
+
 
