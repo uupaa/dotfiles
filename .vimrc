@@ -56,6 +56,7 @@ set wrapscan            "検索時に最後まで行ったら最初に戻る
 set noincsearch         "検索文字列入力時に順次対象文字列にヒットさせない
 set nohlsearch          "検索結果文字列の非ハイライト表示
 set noswapfile          "スワップファイルを作成しない
+set directory=~/backup/vim/swap  "スワップファイルを作成する
 set clipboard=unnamed,autoselect " ヤンクでクリップボードにコピーする
 set incsearch           "検索してすぐにその単語の所まで飛ぶ
 set hlsearch            "検索ワードをハイライトする

@@ -258,7 +258,8 @@ alias test="npm run test"
 alias lint="npm run lint"
 alias all="install;build;test;lint"
 
-alias nw="nodewebkit"
+alias nw="~/oss/my/nw/nwjs.app/Contents/MacOS/nwjs"
+alias el="./Electron.app/Contents/MacOS/Electron your-app/"
 
 alias tt="tig status"
 
@@ -266,4 +267,12 @@ alias wm="npm update; npm run test-page; npm run build; npm run test"
 alias pub="git push; npm publish"
 
 export NODE_PATH="/usr/local/lib/node_modules"
+
+# HSL, MPEG-DASH settings
+alias MP4Box="/Applications/Osmo4.app/Contents/MacOS/MP4Box"
+alias nginx_conf="vi /usr/local/etc/nginx/nginx.conf"
+
+# add path
+export PATH="$PATH:/usr/local:/usr/local/sbin"
+
 
