@@ -3,8 +3,13 @@
 # https://github.com/dzfl/dotfiles/blob/master/.zshrc
 
 # JAVA
+<<<<<<< HEAD
 #export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home"
 export JAVA_HODE=`/usr/libexec/java_home -v 1.8.0_25`
+=======
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home"
+export JRE_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre"
+>>>>>>> 483e5585177ae847c05873c2a746ea96cf30c322
 
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
@@ -87,6 +92,7 @@ alias vv='/Applications/MacVim.app/Contents/MacOS/MacVim -g'
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 #alias vim='env_LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim="mvim --remote-tab-silent"
+alias nw="~/oss/my/node-webkit/node-webkit.app/Contents/MacOS/node-webkit"
 
 alias grunt='/usr/local/share/npm/bin/grunt'
 alias jshint='/usr/local/share/npm/bin/jshint'
@@ -169,6 +175,7 @@ export NODE_PATH="/usr/local/lib/node_modules"
 export PATH="$PATH:/Applications/android-sdk/platform-tools"
 
 export PATH="/usr/local/bin:$PATH"
+##export PATH="$HOME/.nodebrew/current/bin:$PATH"
 
 
 
@@ -205,6 +212,11 @@ alias git-user="git config user.name uupaa ; git config user.email uupaa.js@gmai
 #export GIT_PS1_SHOWDIRTYSTATE=true
 #export PS1='\[\033[40;1;32m\]\u\[\033[2;32m\]@\[\033[0m\]\[\033[40;32m\]\h \[\033[1;36m\]\w \[\033[31m\]$(__git_ps1 "[%s]")\[\033[00m\] \[\033[0m\]\[\033[40;2;37m\]`date +"%Y/%m/%d %p %H:%M:%S"` \[\033[0m\]\n\\$ '
 #export PS1=$PS1
+
+#for zsh-completions
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+
 
 # https://gist.github.com/uupaa/97ded5812fc9d2f93fbb
 #
@@ -254,19 +266,13 @@ alias ios-simu="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimul
 
 alias install="rm -rf node_modules; npm install"
 alias build="npm run build"
-alias test="npm run test"
 alias lint="npm run lint"
-alias all="install;build;test;lint"
+alias pub="git push; npm publish"
+alias tt="tig status"
+alias gg='npm run patch; git add . ; git commit -m "follow WebModule"; git push; npm publish'
 
 alias nw="~/oss/my/nw/nwjs.app/Contents/MacOS/nwjs"
 alias el="./Electron.app/Contents/MacOS/Electron your-app/"
-
-alias tt="tig status"
-
-alias wm="npm update; npm run test-page; npm run build; npm run test"
-alias pub="git push; npm publish"
-
-export NODE_PATH="/usr/local/lib/node_modules"
 
 # HSL, MPEG-DASH settings
 alias MP4Box="/Applications/Osmo4.app/Contents/MacOS/MP4Box"

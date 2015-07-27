@@ -199,6 +199,7 @@ set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
 " http://nanasi.jp/articles/howto/file/expand.html
 
 " :grep や :make の実行後、自動的に QuickFix ウィンドウを開く
+" QuickFix では、:cn で次に移動、:cp で前に移動
 command! -nargs=1 Grep call s:Grep("grep", <f-args>)
 function! s:Grep(cmd, arg)
  exe "sil " . cmd . " ". a:arg
