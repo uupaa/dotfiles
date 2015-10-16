@@ -3,13 +3,10 @@
 # https://github.com/dzfl/dotfiles/blob/master/.zshrc
 
 # JAVA
-<<<<<<< HEAD
 #export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home"
 export JAVA_HODE=`/usr/libexec/java_home -v 1.8.0_25`
-=======
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home"
-export JRE_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre"
->>>>>>> 483e5585177ae847c05873c2a746ea96cf30c322
+#export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home"
+#export JRE_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre"
 
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
@@ -167,17 +164,40 @@ function git_diff() {
 
 ### Add $HOME/dotfile
 #PATH="$HOME/dotfiles:$PATH"
-#PATH="/usr/local/share/npm/bin:$PATH"
 
 export NODE_PATH="/usr/local/lib/node_modules"
 
 ### android-sdk path
-export PATH="$PATH:/Applications/android-sdk/platform-tools"
+#export PATH="$PATH:/Applications/android-sdk/platform-tools"
 
-export PATH="/usr/local/bin:$PATH"
-##export PATH="$HOME/.nodebrew/current/bin:$PATH"
+### PATH ##########################################
+#  typeset
+#    -U 重複パスを登録しない
+#    -x exportも同時に行う
+#    -T 環境変数へ紐付け
+#
+#   path=xxxx(N-/)
+#     (N-/): 存在しないディレクトリは登録しない
+#     パス(...): ...という条件にマッチするパスのみ残す
+#        N: NULL_GLOBオプションを設定。
+#           globがマッチしなかったり存在しないパスを無視する
+#        -: シンボリックリンク先のパスを評価
+#        /: ディレクトリのみ残す
+#        .: 通常のファイルのみ残す
 
 
+## 重複パスを登録しない
+typeset -U path cdpath fpath manpath
+
+## sudo用のpathを設定
+typeset -xT SUDO_PATH sudo_path
+typeset -U sudo_path
+sudo_path=({/usr/local,/usr,}/sbin(N-/))
+
+## pathを設定
+path=(~/bin(N-/) /usr/local/bin(N-/) /usr/local/sbin(N-/) ${path})
+
+###################################################
 
 
 
@@ -276,9 +296,13 @@ alias el="./Electron.app/Contents/MacOS/Electron your-app/"
 
 # HSL, MPEG-DASH settings
 alias MP4Box="/Applications/Osmo4.app/Contents/MacOS/MP4Box"
-alias nginx_conf="vi /usr/local/etc/nginx/nginx.conf"
+alias ngconf="vi /usr/local/etc/nginx/nginx.conf"
 
-# add path
-export PATH="$PATH:/usr/local:/usr/local/sbin"
+alias ngtest="nginx -t"
+alias ngstop="nginx -s stop"
+alias ngstart="nginx -s reload"
 
+## can use alias in sudo
+## http://yudoufu.hatenablog.jp/entry/20110326/1301129885
+alias sudo='sudo -E '
 
