@@ -34,6 +34,9 @@ setopt hist_no_store
 # 履歴をインクリメンタルに追加
 setopt inc_append_history
 
+# AUTO_PUSHD
+setopt auto_pushd
+
 # 余分な空白は詰めて登録(空白数違い登録を防ぐ)
 setopt hist_reduce_blanks
 
@@ -305,4 +308,7 @@ alias ngstart="nginx -s reload"
 ## can use alias in sudo
 ## http://yudoufu.hatenablog.jp/entry/20110326/1301129885
 alias sudo='sudo -E '
+
+## electron cli
+alias el='/usr/local/bin/electron'
 
