@@ -4,9 +4,10 @@
 
 # JAVA
 #export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home"
-export JAVA_HODE=`/usr/libexec/java_home -v 1.8.0_25`
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_25`
 #export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home"
 #export JRE_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre"
+export CLASSPATH=".:~/oss/my/jcodec/src/main/java"
 
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
@@ -92,9 +93,8 @@ alias vv='/Applications/MacVim.app/Contents/MacOS/MacVim -g'
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 #alias vim='env_LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim="mvim --remote-tab-silent"
-alias nw="~/oss/my/node-webkit/node-webkit.app/Contents/MacOS/node-webkit"
 
-alias grunt='/usr/local/share/npm/bin/grunt'
+# alias grunt='/usr/local/share/npm/bin/grunt'
 alias jshint='/usr/local/share/npm/bin/jshint'
 # alias ruby='/usr/local/bin/ruby'
 
@@ -104,8 +104,10 @@ alias jshint='/usr/local/share/npm/bin/jshint'
 alias gitflow='git flow feature start'
 # gitend {{branch-name}}
 alias gitend='git flow feature finish -k'
-# git status shortcut
+
+# git commands shortcut
 alias gs='git status'
+alias gd='git diff'
 
 
 # ctags
@@ -127,9 +129,11 @@ function pcolor() {
 }
 
 # edit and reload resource files: 設定ファイル(zshrc, vimrc)編集用
-alias rr='vi ~/.zshrc ~/.vimrc ~/.gvimrc;rrr'
+alias rr='vi ~/.zshrc ~/.vimrc ~/.gvimrc'
 function rrr() {
   source ${HOME}/.zshrc
+  echo "HOME:" ${HOME}
+  echo "PATH:" ${PATH}
 }
 
 
@@ -189,22 +193,30 @@ export NODE_PATH="/usr/local/lib/node_modules"
 #        .: 通常のファイルのみ残す
 
 
-## 重複パスを登録しない
-typeset -U path cdpath fpath manpath
+#### ## 重複パスを登録しない
+#### typeset -U path cdpath fpath manpath
+#### 
+#### ## sudo用のpathを設定
+#### typeset -xT SUDO_PATH sudo_path
+#### typeset -U sudo_path
+#### sudo_path=({/usr/local,/usr,}/sbin(N-/))
+#### 
+#### ## pathを設定
+#### 
+#### path=(
+####     ${path}
+####     ~/bin(N-/)
+####     /usr/local/bin(N-/)
+####     /usr/local/sbin(N-/)
+####     ~/Library/Android/sdk/platform-tools(N-/)
+####     ~/.rbenv/bin(N-/)
+#### )
+#export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin:~/Library/Android/sdk/platform-tools
 
-## sudo用のpathを設定
-typeset -xT SUDO_PATH sudo_path
-typeset -U sudo_path
-sudo_path=({/usr/local,/usr,}/sbin(N-/))
+export PATH="~/bin:/usr/local/bin:/usr/local/sbin:$HOME/Library/Android/sdk/platform-tools:~/.rbenv/bin:$PATH"
 
-## pathを設定
-path=(~/bin(N-/) /usr/local/bin(N-/) /usr/local/sbin(N-/) ${path})
-
-###################################################
-
-
-
-
+## install npm package to local and run.
+# export PATH=$PATH:./node_modules/.bin
 
 # JSX
 alias jsxx='jsx --executable web --output '
@@ -287,9 +299,9 @@ alias ios-simu="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimul
 
 
 
-alias install="rm -rf node_modules; npm install"
-alias build="npm run build"
-alias lint="npm run lint"
+#alias install="rm -rf node_modules; npm install"
+#alias build="npm run build"
+#alias lint="npm run lint"
 alias pub="git push; npm publish"
 alias tt="tig status"
 alias gg='npm run patch; git add . ; git commit -m "follow WebModule"; git push; npm publish'
@@ -312,3 +324,47 @@ alias sudo='sudo -E '
 ## electron cli
 alias el='/usr/local/bin/electron'
 
+## ag
+alias agmd='ag -G \.md$ '
+
+## adb
+alias adb ~/Library/Android/sdk/platform-tools/adb
+
+## mdfind
+# alias mdfind -onlyin dir... -name file
+
+alias find_modules='ls -tl `find . -regex ".*node_modules.*" -name "*.js" -type f -print` | head -20'
+alias hlsdump='node index.js'
+
+
+## rbenv
+eval "$(rbenv init -)"
+
+
+
+
+export PATH="$HOME/.yarn/bin:$PATH"
+
+
+## peco
+# ps aux | peco
+#
+
+
+## emscripten
+#Adding directories to PATH:
+export PATH="$PATH:~/oss/my/emscripten/emsdk_portable"
+export PATH="$PATH:~/oss/my/emscripten/emsdk_portable/clang/e1.35.0_64bit"
+export PATH="$PATH:~/oss/my/emscripten/emsdk_portable/node/4.1.1_64bit/bin"
+export PATH="$PATH:~/oss/my/emscripten/emsdk_portable/emscripten/1.35.0"
+
+#Setting environment variables:
+export EM_CONFIG="~/.emscripten"
+export EMSCRIPTEN="~/oss/my/emscripten/emsdk_portable/emscripten/1.35.0"
+
+## brew install ffmpeg --with-frei0r settings
+export FREI0R_PATH="/usr/local/lib/frei0r-1"
+
+
+## http://apple.stackexchange.com/questions/269785/tell-git-not-to-use-my-github-account-keychain-for-public-repositories-its
+# export HOMEBREW_NO_GITHUB_API=1
