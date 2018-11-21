@@ -8,6 +8,7 @@
 	ui = 1
 [diff]
 	external = ~/dotfiles/git_diff_wrapper
+	compactionHeuristic = true
 [pager]
 	diff =
 [core]

@@ -47,7 +47,7 @@ set showcmd             "入力中のコマンドをステータスに表示す�
 set showmatch           "括弧入力時の対応する括弧を表示
 set laststatus=2        "ステータスラインを常に表示
 set expandtab           "タブの代わりに空白文字挿入
-set ts=4 sw=4 sts=0     "タブは半角4文字分のスペース
+set ts=2 sw=2 sts=0     "タブは半角4文字分のスペース
 set ignorecase          "検索文字列が小文字の場合は大文字小文字を区別なく検索する
 set smartcase           "検索文字列に大文字が含まれている場合は区別して検索する
 set nowrap              "長い行を折り返さない
@@ -55,11 +55,13 @@ set wrapscan            "検索時に最後まで行ったら最初に戻る
 "set gdefault            "gオプションをデフォルトに
 set noincsearch         "検索文字列入力時に順次対象文字列にヒットさせない
 set nohlsearch          "検索結果文字列の非ハイライト表示
-set noswapfile          "スワップファイルを作成しない
+"set noswapfile          "スワップファイルを作成しない
+set swapfile            "スワップファイルを作成する
 set directory=~/backup/vim/swap  "スワップファイルを作成する
 set clipboard=unnamed,autoselect " ヤンクでクリップボードにコピーする
 set incsearch           "検索してすぐにその単語の所まで飛ぶ
 set hlsearch            "検索ワードをハイライトする
+set noeol               "末尾の改行を自動的に挿入しない
 
 " open したファイルのディレクトリにカレントディレクトリを移動する
 " http://d.hatena.ne.jp/homaju/20130131/1359614451
@@ -121,6 +123,10 @@ endfunction
 "autocmd QuickfixCmdPost vimgrep call OpenModifiableQF()
 autocmd QuickfixCmdPost grep call OpenModifiableQF()
 
+" --------------------------------------------------
+" 新MBP TouchBar の F1 を ESC にマップする
+:map <F1> <Esc>
+:imap <F1> <Esc>
 
 " ---------------------------------------------------
 " NERDTree - http://blog.livedoor.jp/sasata299/archives/51711587.html
@@ -135,17 +141,71 @@ autocmd QuickfixCmdPost grep call OpenModifiableQF()
 
 "filetype off
 
+"--- Vundle setting start ---
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+"Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+" Git plugin not hosted on GitHub
+"Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+"Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+" Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" add TypeScript plugin
+Plugin 'leafgarland/typescript-vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+"
+"--- Vundle setting end ---
+
+
+
+
 "-----------------------------------
 
-set rtp+=~/.vim/vundle/vundle.git/
-call vundle#rc()
+"set rtp+=~/.vim/vundle/vundle.git/
+"call vundle#rc()
 
 " github の任意のリポジトリ
 " 変更後に :BundleInstall を実行すること
 Bundle 'scrooloose/nerdtree'
 " Bundle 'altercation/vim-colors-solarized'
 Bundle 'mileszs/ack.vim'
-" Bundle 'typescript-vim'
+" TypeScript
+"Bundle 'typescript-vim'
 " Ack [option]{pattern}[dir]
 " 例: Ack function
 " コマンドラインからは ack function <CR>
@@ -351,7 +411,7 @@ set statusline=%F%m%r%h%w\ {%{&fileencoding},%Y,%03v,%03p%%,%04B,%{&ff}} " path 
 
 
 " TypeScript
-" autocmd BufRead,BufNewFile *.ts set filetype=typescript
+autocmd BufRead,BufNewFile *.ts set filetype=typescript
 
 
 
@@ -381,4 +441,7 @@ hi DiffAdd    ctermfg=black ctermbg=2
 hi DiffChange ctermfg=black ctermbg=3
 hi DiffDelete ctermfg=black ctermbg=6
 hi DiffText   ctermfg=black ctermbg=7
+
+
+
 

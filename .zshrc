@@ -240,7 +240,7 @@ alias flashlog='tail -f ~/Library/Preferences/Macromedia/Flash\ Player/Logs/flas
 #alias taskslide="pandoc --section-divs -s -t html5 --template ~/oss/my/Task.js/slide/template.html ./index.md -o ~/oss/my/Task.js/slide/index.html"
 
 # set git author user.name and user.email
-alias git-user="git config user.name uupaa ; git config user.email uupaa.js@gmail.com"
+alias github-user="git config user.name uupaa ; git config user.email uupaa.js@gmail.com"
 
 
 #~/dotfiles/.git-prompt.sh
@@ -292,8 +292,6 @@ RPROMPT='[`rprompt-git-current-branch`%~]'
 
 
 #
-#alias git-init='git-user; rm .gitignore .npmignore .jshintrc; ../Xxx.js/clone.js; git add .gitignore .npmignore .jshintrc README.md LICENSE'
-alias git-user="git config user.name uupaa ; git config user.email uupaa.js@gmail.com"
 
 alias ios-simu="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app/Contents/MacOS/iPhone\ Simulator -SimulateApplication /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/Applications/MobileSafari.app/MobileSafari -u http://example.com"
 
@@ -306,9 +304,6 @@ alias pub="git push; npm publish"
 alias tt="tig status"
 alias gg='npm run patch; git add . ; git commit -m "follow WebModule"; git push; npm publish'
 
-alias nw="~/oss/my/nw/nwjs.app/Contents/MacOS/nwjs"
-alias el="./Electron.app/Contents/MacOS/Electron your-app/"
-
 # HSL, MPEG-DASH settings
 alias MP4Box="/Applications/Osmo4.app/Contents/MacOS/MP4Box"
 alias ngconf="vi /usr/local/etc/nginx/nginx.conf"
@@ -320,9 +315,6 @@ alias ngstart="nginx -s reload"
 ## can use alias in sudo
 ## http://yudoufu.hatenablog.jp/entry/20110326/1301129885
 alias sudo='sudo -E '
-
-## electron cli
-alias el='/usr/local/bin/electron'
 
 ## ag
 alias agmd='ag -G \.md$ '
@@ -338,7 +330,7 @@ alias hlsdump='node index.js'
 
 
 ## rbenv
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 
 
 
@@ -368,3 +360,68 @@ export FREI0R_PATH="/usr/local/lib/frei0r-1"
 
 ## http://apple.stackexchange.com/questions/269785/tell-git-not-to-use-my-github-account-keychain-for-public-repositories-its
 # export HOMEBREW_NO_GITHUB_API=1
+
+
+## Python3
+alias p3='python3'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '~/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '~/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '~/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '~/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+## HTTP/2 + WireShark
+export SSLKEYLOGFILE="~/Desktop/tls_key.log"
+
+## resolve a local installed npm module bin path (./node_modules/.bin)
+export PATH="./node_modules/.bin:$PATH"
+
+## resolve a local installed npm module bin path `$(npm bin)`
+
+# Rust tools path
+## source ~/.cargo/env
+
+## Chrome canary + no secure
+alias canary='open -a Google\ Chrome\ Canary --args --user-data-dir ~/ --allow-insecure-localhost --allow-cross-origin-auth-prompt --disable-web-security --ignore-certificate-errors --unsafely-treat-insecure-origin-as-secure=https://localhost'
+  # --user-data-dir ~/
+  # --allow-insecure-localhost
+  # --allow-cross-origin-auth-prompt
+  # --enable-module-scripts-dynamic-import
+  # --harmony-dynamic-import
+  # --disable-web-security
+  # --ignore-certificate-errors
+  # --unsafely-treat-insecure-origin-as-secure=https://localhost:1123
+
+alias chrome='open -a Google\ Chrome --args --user-data-dir ~/ --allow-insecure-localhost --allow-cross-origin-auth-prompt --disable-web-security --ignore-certificate-errors --unsafely-treat-insecure-origin-as-secure=https://localhost'
+
+
+alias ddms='~/Library/Android/sdk/tools/monitor'
+
+
+
+## scp TL;DR
+#
+# put local file/dir to remote:
+#   scp [options] {local_file_or_dir} {remote_user}@{remote_ip_or_domain}:{remote-path}
+#   put file: scp file.md foo@192.168.1.10:~/share
+#   put dir:  scp -rq dir foo@192.168.1.10:~/share
+#
+# get remote file/dir to local:
+#   scp [options] {remote_user}@{remote_ip_or_domain}:{remote-path} {local_file_or_dir}
+#   get file: scp foo@192.168.1.10:~/share/file.md .
+#   get dir:  scp -rq foo@192.168.1.10:~/share/dir .
+
+
+
+# Flutter
+export PATH="~/wip/_/www/oss/flutter/bin:$PATH"
+
+# GO
+
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
+
+
+
+
